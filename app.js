@@ -9,7 +9,9 @@ const jsonSecret = 'myscretstring'
 app.post('/sign-token', (req, res) => {
   const { firstName, lastName, id } = req.body
 
-  if ((firstName === '' || lastName === '', id === '')) {
+  console.log(firstName, lastName, id)
+
+  if (!firstName || !lastName || !id) {
     return res.status(403).json({
       status: 'fail',
       errorMessage: 'All fields are required',
